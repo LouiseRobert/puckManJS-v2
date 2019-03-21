@@ -16,7 +16,16 @@ class Element {
   		this.ctxDepl = this.canvaDepl.getContext("2d");
   		this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
   	}
-	
+
+  	move(x,y) {
+		var elem = document.getElementById(this.id);
+		this.ctxDepl.clearRect(this.x, this.y, this.larg, this.haut);
+		this.x += x*20;
+		this.y += y*20;
+		console.log(this.x + " , " + this.y);
+		this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
+
+	}
 
 	depDroite(){
 		var elem = document.getElementById(this.id);
