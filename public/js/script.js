@@ -13,20 +13,20 @@ window.onload = function() {
     var k = event.key;
     switch (k) {
       case "ArrowLeft" : // touche gauche
-        pac.move(-1, 0);
         pac.changeDirection("left");
+        pac.move(-1, 0);
         break;
       case "ArrowUp" : // touche haut
-        pac.move(0, -1);
         pac.changeDirection("up");
+        pac.move(0, -1);
         break;
       case "ArrowRight" : // touche droite
-        pac.move(1, 0);
         pac.changeDirection("right");
+        pac.move(1, 0);
         break;
       case "ArrowDown" : // touche bas
-        pac.move(0, 1);
         pac.changeDirection("down");
+        pac.move(0, 1);
         break;
     }
   }
@@ -34,4 +34,4 @@ window.onload = function() {
   document.addEventListener('keydown', gererClavier);
 
 
-}
+};
