@@ -1,6 +1,6 @@
 class Pac extends Element{
 	constructor(){
-		super('pacD', 30, 30, 25, 25);
+		super('pacD', 50, 50, 25, 25);
 	}
 
 	depDroite(){

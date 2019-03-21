@@ -15,6 +15,8 @@ class Element {
 
   		this.ctxDepl = this.canvaDepl.getContext("2d");
   		this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
+
+  		this.coordInterdites = [[290,50],[530,50],[670,50],[670,70],[670,90],[670,110]];
   	}
 	
 
