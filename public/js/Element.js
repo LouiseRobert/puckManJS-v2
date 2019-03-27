@@ -83,8 +83,14 @@ class Element {
         x = 0;
         y = 0;
       } else{
+        if((this.x == -10 && this.y == 350) || (this.x == -10 && this.y == 330)){
+          this.x = 650
+        } else if((this.x == 670 && this.y == 350) || (this.x == 670 && this.y == 330)){
+          this.x = 10;
+        } else {
         this.x += x*20;
         this.y += y*20;
+        }
 			}
 
 			this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
