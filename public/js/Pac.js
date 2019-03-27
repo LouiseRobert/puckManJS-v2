@@ -1,6 +1,6 @@
 class Pac extends Element{
 	constructor(){
-		super('pacD', 50, 50, 25, 25);
+		super('pacG', 270, 210, 25, 25);
 	}
 
 	changeDirection(d) {
