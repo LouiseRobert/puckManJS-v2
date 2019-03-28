@@ -1,10 +1,24 @@
+/**
+ * Classe gérant le personnage principal
+ */
 class Pac extends Element{
+
+	/**
+	 * Crée un nouveau pac avec un canvas de déplacement et des gommes en appelant le constructeur d'element
+	 * @constructor
+	 * @param canvasDepl
+	 * @param placeGommes
+	 */
 	constructor(canvasDepl, placeGommes){
 		super('pacG', 270, 210, 25, 25, canvasDepl);
 		this.coordGommes = placeGommes;
 		this.gommesMangees = 0;
 	}
 
+	/**
+	 * change l'image du pac en fonction de la direction d dans laquelle il se dirige
+	 * @param d : direction dans laquelle le pac se dirige
+	 */
 	changeDirection(d) {
 		switch (d) {
 			case "right":
@@ -23,12 +37,18 @@ class Pac extends Element{
 		document.getElementById(this.id).src = this.src;
 	}
 
+
+	/**
+	 * Déplace le pac en faisant appel à move de Element et mange les gommes si il se déplace dessus
+	 * @param x
+	 * @param y
+	 */
 	move(x, y){
 		super.move(x, y);
 
 		this.myMove2 = setInterval(function(){
 			for(var tabcoord of this.coordGommes){
-				if(tabcoord[0] == this.getCoord()[0] && tabcoord[1] == this.getCoord()[1]){
+				if(tabcoord[0] === this.getCoord()[0] && tabcoord[1] === this.getCoord()[1]){
 					tabcoord[0] = 0;
 					tabcoord[1] = 0;
 					this.gommesMangees += 1;
@@ -37,6 +57,6 @@ class Pac extends Element{
 			
 		}.bind(this),120);
 
-		console.log("gommes mangées: " + this.gommesMangees );
+		console.log("gommes mangées: " + this.gommesMangees);
 	}
 }
