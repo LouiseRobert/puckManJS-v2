@@ -11,7 +11,7 @@ class Gomme{
 	 */
 	constructor(x, y, canvasDepl){
 		//on affecte x et y a this.x et this.y
-		this.x = x + 10; // +10 pour les placer correctemet par rapport au Pac
+		this.x = x + 10; // + 10 pour les placer correctement par rapport au Pac
 		this.y = y + 10;
 
 
