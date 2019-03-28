@@ -98,8 +98,8 @@ class Element {
 	 * @param y  deplacement en ordonnée
 	 */
 	move(x,y) {
-
-		//console.log(this.moving);
+		console.log(this.x + " " + this.y);
+		this.moved = false;
 		if (this.moving !== undefined) {
 			if (this.moving === x + " " + y) {
 				return false;
@@ -107,16 +107,20 @@ class Element {
 				clearInterval(this.myMove);
 			}
 		}
+		//console.log(" av " + this.moving + " " + x + " " + y);
 		this.moving = x + " " + y;
+		//console.log(" ap " + this.moving + " " + x + " " + y);
+
 		this.myMove = setInterval(function () {
 			//console.log(this.x + "," + this.y); // POUR RECCUPERER LES COORDONNÉES, A SUPPRIMER PLUS TARD
-			var elem = document.getElementById(this.id);
+			let elem = document.getElementById(this.id);
 			this.ctxDepl.clearRect(this.x, this.y, this.larg, this.haut);
 
 			if(this.estCoordInterdite(this.x+x*20, this.y+y*20)){
-				x = 0;
-				y = 0;
-			} else{
+				clearInterval(this.myMove);
+			} else {
+				console.log("wtf");
+				this.moved = true;
 				if((this.x === -10 && this.y === 350) || (this.x === -10 && this.y === 330)){
 					this.x = 650
 				} else if((this.x === 670 && this.y === 350) || (this.x === 670 && this.y === 330)){
@@ -129,6 +133,7 @@ class Element {
 
 			this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
 		}.bind(this),120);
+		console.log(this.moved);
 	}
 
 

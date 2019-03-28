@@ -43,7 +43,7 @@ class Pac extends Element{
 	 * @param x
 	 * @param y
 	 */
-	move(x, y){
+	move(x, y) {
 		super.move(x, y);
 
 		this.myMove2 = setInterval(function(){
@@ -55,14 +55,14 @@ class Pac extends Element{
 				}
 			}
 
-			if(this.gommesMangees == this.coordGommes.length){
+			if(this.gommesMangees === this.coordGommes.length){
 				this.gommesMangees = NaN; //pour éviter les incrémentations inattendues
 				var div = document.createElement("div");
 						var p = document.createElement("p");
 						var rejouer = document.createElement("button");
 						p.innerHTML = "bravo, vous avez gagné !";
 						rejouer.innerHTML = "rejouer";
-						rejouer.onclick = function(){document.location.reload(false);}
+						rejouer.onclick = function(){document.location.href = location.href;};
 						div.appendChild(p);
 						div.appendChild(rejouer);
 						div.style.border = "1px solid black";

@@ -2,6 +2,12 @@
  * On exécute le code quand la fenetre est chargée
  */
 window.onload = function() {
+//On definit des constantes pour les directions
+  const bot = "bot";
+  const left = "left";
+  const right = "right";
+  const top = "top";
+
     //On crée les variables dont on a besoin pour dessiner la map, les personnages et les gommes
   var c = document.getElementById("myCanvas");
   var d = document.getElementById("canvaDepl");
@@ -42,19 +48,31 @@ window.onload = function() {
 
 
   //On crée une gomme a chacun des emplacements du tableau
-    for(var coord of emplacementGommes){
+    for(let coord of emplacementGommes){
         new Gomme(coord[0], coord[1], d);
     }
 
 
-    var pac = new Pac(d, emplacementGommes);
+    let pac = new Pac(d, emplacementGommes);
+
+//Tableau des cases où les fantomes doivent avoir une chance de tourner meme s'ils ne sont pas arretes par un decor
+
+  let arr = [[210, 50, [bot, left, right]],[350,130, [top, right,left]],[130,210,[left,top,bot]],[470,50,[bot,left,right]],[210,130,[top,left,right]],[470,130,[top,left,right]],[370,130,[bot,left,right]],[390,130,[bot,left,right]],[410,130,[bot,left,right]]
+      ,[410,130,[bot,left,right]],[430,130,[bot,left,right]],[450,130,[bot,left,right]],[550,290,[bot,left,top]],[550,190,[bot,top,right]],[630,190,[bot,left,top]],[550,370,[bot,left,top]],[550,430,[bot,top,right]],[470,510,[bot,left,right]],[470,590,[top,left,right]]
+      ,[390,510,[top,left,right]],[410,510,[top,left,right]],[430,510,[top,left,right]],[390,450,[bot,left,right]],[410,450,[bot,left,right]],[430,450,[bot,left,right]],[350,590,[top,left,right]],[330,590,[top,left,right]],[330,510,[bot,left,right]],[350,510,[bot,left,right]]
+      ,[250,510,[top,left,right]],[270,510,[top,left,right]],[270,410,[bot,left,right]],[250,410,[bot,left,right]],[130,410,[top,bot,right]],[130,390,[top,bot,right]],[130,370,[top,bot,right]],[130,350,[top,bot,right]]
+      ,[130,270,[top,bot,right]],[130,250,[top,bot,right]],[130,230,[top,bot,right]],[130,290,[top,bot,right]],[190,290,[top,bot,left,right]],[190,270,[top,bot,left,right]],[190,250,[top,bot,left,right]],[190,230,[top,bot,left,right]]
+      ,[190,510,[left,bot,right]],[210,510,[left,bot,right]],[190,590,[left,top,right]],[210,590,[left,top,right]],[50,430,[top,bot,right]],[50,450,[top,bot,right]],[150,430,[top,bot,left]],[130,450,[top,bot,left]]];
+    /*let blinky = new Ennemy('blinky', 270, 210, 25, 25, d, "red");
+    blinky.move();*/
+
 
     //on gere les entrées clavier pour se déplacer
   function gererClavier(event) {
-    var k = event.key;
+    let k = event.key;
     switch (k) {
       case "ArrowLeft" : // touche gauche
-        pac.changeDirection("left");
+        pac.changeDirection(left);
         pac.move(-1, 0);
         break;
       case "ArrowUp" : // touche haut
@@ -62,7 +80,7 @@ window.onload = function() {
         pac.move(0, -1);
         break;
       case "ArrowRight" : // touche droite
-        pac.changeDirection("right");
+        pac.changeDirection(right);
         pac.move(1, 0);
         break;
       case "ArrowDown" : // touche bas
