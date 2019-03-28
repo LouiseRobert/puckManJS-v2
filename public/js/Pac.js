@@ -1,6 +1,8 @@
 class Pac extends Element{
-	constructor(){
-		super('pacG', 270, 210, 25, 25);
+	constructor(canvasDepl, placeGommes){
+		super('pacG', 270, 210, 25, 25, canvasDepl);
+		this.coordGommes = placeGommes;
+		this.gommesMangees = 0;
 	}
 
 	changeDirection(d) {
@@ -20,5 +22,21 @@ class Pac extends Element{
 		}
 		document.getElementById(this.id).src = this.src;
 	}
-}
 
+	move(x, y){
+		super.move(x, y);
+
+		this.myMove2 = setInterval(function(){
+			for(var tabcoord of this.coordGommes){
+				if(tabcoord[0] == this.getCoord()[0] && tabcoord[1] == this.getCoord()[1]){
+					tabcoord[0] = 0;
+					tabcoord[1] = 0;
+					this.gommesMangees += 1;
+				}
+			}
+			
+		}.bind(this),120);
+
+		console.log("gommes mangées: " + this.gommesMangees );
+	}
+}

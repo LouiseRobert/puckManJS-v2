@@ -1,5 +1,5 @@
 class Element {
-	constructor(id, x, y, larg, haut){
+	constructor(id, x, y, larg, haut, canvasDepl){
 		this.x = x;
 		this.y = y;
 		this.larg = larg;
@@ -8,7 +8,7 @@ class Element {
 
 		var elem = document.getElementById(id);
 		this.canvas = document.getElementById("myCanvas");
-		this.canvaDepl = document.getElementById("canvaDepl");
+		this.canvaDepl = canvasDepl;
 
   		this.ctx = this.canvas.getContext("2d");
 
@@ -50,9 +50,6 @@ class Element {
   		[170,210],[190,170],[290,270],[270,270],[270,290],[270,310],[250,310],[230,310],[210,310],[190,310],[170,310],[170,310],[170,330],[10,510],
       [190,330],[210,330],[230,330],[250,330],[250,350],[250,370],[430,530],[290,170],[270,170],[250,170],[230,170],[210,170],[10,450]];
 
-
-		this.ctxDepl = this.canvaDepl.getContext("2d");
-		this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
 	}
 
   estCoordInterdite(x, y){
@@ -65,7 +62,7 @@ class Element {
   }
 
 	move(x,y) {
-		console.log(this.moving);
+		//console.log(this.moving);
 		if (this.moving !== undefined) {
 			if (this.moving === x + " " + y) {
 				return false;
@@ -96,4 +93,9 @@ class Element {
 			this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
 		}.bind(this),120)
 	}
+
+  getCoord(){
+    var tabCoord = [this.x , this.y];
+    return tabCoord;
+  }
 }
