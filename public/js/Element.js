@@ -1,4 +1,18 @@
+/**
+ * Classe générique gérant les éléments du jeu
+ */
 class Element {
+
+	/**
+	 * Crée un nouvel Element
+	 * @constructor
+	 * @param id : id html pour le récuperer
+	 * @param x  abscisse
+	 * @param y  ordonnée
+	 * @param larg  largeur de l'image
+	 * @param haut  hauteur de l'image
+	 * @param canvasDepl
+	 */
 	constructor(id, x, y, larg, haut, canvasDepl){
 		this.x = x;
 		this.y = y;
@@ -10,11 +24,12 @@ class Element {
 		this.canvas = document.getElementById("myCanvas");
 		this.canvaDepl = canvasDepl;
 
-  		this.ctx = this.canvas.getContext("2d");
+		this.ctx = this.canvas.getContext("2d");
 
-  		this.ctxDepl = this.canvaDepl.getContext("2d");
-  		this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
+		this.ctxDepl = this.canvaDepl.getContext("2d");
+		this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
 
+		//Coordonnées des murs et du centre
   		this.coordInterdites = [[290,50],[290,30],[290,70],[530,50],[670,50],[670,70],[670,90],[670,110], [30,10], [10,30],[50,10],[70,10],[90,10],
   		[110,10],[130,10],[150,10],[170,10],[190,10],[210,10],[230,10],[250,10],[270,10],[290,10],[290,90],[270,90],[250,90],[230,90],[190,90],
   		[170,90],[150,90],[130,90],[110,90],[90,110],[90,130],[90,150],[90,170],[90,190],[110,190],[110,170],[110,150],[110,130],[110,110],[130,110],
@@ -58,19 +73,32 @@ class Element {
       [130,570],[110,570],[90,570],[70,570],[70,550],[70,470],[70,490],[70,410],[70,390],[70,370],[70,350],[70,330],[70,310],[70,290],[70,270],
       [470,610],[490,610],[510,610],[530,610],[550,610],[570,610],[590,610],[610,610],[630,610],[650,610],[650,590],[650,570],[650,550],[650,530],
       [650,510],[650,490],[650,470],[650,450],[650,430],[630,30],[610,30],[590,30],[570,30],];
-
 	}
 
-  estCoordInterdite(x, y){
-    for( var tab of this.coordInterdites){
-      if(tab[0] == x && tab[1] == y){
-        return true;
-      }
-    }
-    return false;
-  }
 
+	/**
+	 * Teste si une coordonnée est accessible
+	 * @param x
+	 * @param y
+	 * @returns {boolean} : true si la coordonnée est interdite, false sinon
+	 */
+	estCoordInterdite(x, y){
+		for(let tab of this.coordInterdites){
+			if(tab[0] === x && tab[1] === y){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+	/**
+	 * Déplace un Element sur son canvas de deplacement
+	 * @param x  deplacement en abscisse
+	 * @param y  deplacement en ordonnée
+	 */
 	move(x,y) {
+
 		//console.log(this.moving);
 		if (this.moving !== undefined) {
 			if (this.moving === x + " " + y) {
@@ -81,30 +109,34 @@ class Element {
 		}
 		this.moving = x + " " + y;
 		this.myMove = setInterval(function () {
-      console.log(this.x + "," + this.y); // POUR RECCUPERER LES COORDONNÉES, A SUPPRIMER PLUS TARD
+			console.log(this.x + "," + this.y); // POUR RECCUPERER LES COORDONNÉES, A SUPPRIMER PLUS TARD
 			var elem = document.getElementById(this.id);
 			this.ctxDepl.clearRect(this.x, this.y, this.larg, this.haut);
 
-      if(this.estCoordInterdite(this.x+x*20, this.y+y*20)){
-        x = 0;
-        y = 0;
-      } else{
-        if((this.x == -10 && this.y == 350) || (this.x == -10 && this.y == 330)){
-          this.x = 650
-        } else if((this.x == 670 && this.y == 350) || (this.x == 670 && this.y == 330)){
-          this.x = 10;
-        } else {
-        this.x += x*20;
-        this.y += y*20;
-        }
+			if(this.estCoordInterdite(this.x+x*20, this.y+y*20)){
+				x = 0;
+				y = 0;
+			} else{
+				if((this.x === -10 && this.y === 350) || (this.x === -10 && this.y === 330)){
+					this.x = 650
+				} else if((this.x === 670 && this.y === 350) || (this.x === 670 && this.y === 330)){
+					this.x = 10;
+				} else {
+					this.x += x*20;
+					this.y += y*20;
+				}
 			}
 
 			this.ctxDepl.drawImage(elem, this.x, this.y, this.larg, this.haut);
-		}.bind(this),120)
+		}.bind(this),120);
 	}
 
-  getCoord(){
-    var tabCoord = [this.x , this.y];
-    return tabCoord;
-  }
+
+	/**
+	 * Getter des coordonées de this
+	 * @returns {*[]} : tableau des coordonnées de this
+	 */
+	getCoord(){
+		return [this.x, this.y];
+	}
 }

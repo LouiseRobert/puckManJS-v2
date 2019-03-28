@@ -1,11 +1,15 @@
+/**
+ * On exécute le code quand la fenetre est chargée
+ */
 window.onload = function() {
+    //On crée les variables dont on a besoin pour dessiner la map, les personnages et les gommes
   var c = document.getElementById("myCanvas");
   var d = document.getElementById("canvaDepl");
   var ctx = c.getContext("2d");
-  var ctxDepl = d.getContext("2d");
   var tile = document.getElementById("tileset");
   ctx.drawImage(tile, 0, 0);
 
+  //On crée un tableau contenant les emplacements des gommes
   var emplacementGommes = [[270,50],[250,50],[230,50],[210,50],[190,50],[170,50],
     [150,50],[130,50],[110,50],[90,50],[70,50],[50,50],[50,70],[50,90],[50,110],
     [50,130],[50,150],[50,170],[50,190],[130,130],[130,150],[130,170],[130,190],
@@ -37,13 +41,15 @@ window.onload = function() {
     [630,570]];
 
 
+  //On crée une gomme a chacun des emplacements du tableau
     for(var coord of emplacementGommes){
-      var gom = new Gomme(coord[0], coord[1], d);
+        new Gomme(coord[0], coord[1], d);
     }
 
-    
-  var pac = new Pac(d, emplacementGommes);
 
+    var pac = new Pac(d, emplacementGommes);
+
+    //on gere les entrées clavier pour se déplacer
   function gererClavier(event) {
     var k = event.key;
     switch (k) {
