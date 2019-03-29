@@ -46,7 +46,7 @@ window.onload = function() {
   const right = "right";
   const top = "top";
 
-  // si le jeu est en pause ou non
+  // si le jeu est en pause ou non (-1 s'il n'est pas en pause)
   var interval = -1;
 
     //On crée les variables dont on a besoin pour dessiner la map, les personnages et les gommes
@@ -130,7 +130,7 @@ window.onload = function() {
         break;        
     }
   }
-
+  // on gère la barre espace pour mettre le jeu en pause
   function gererPause(event){
     let k = event.key;
     if(k == " "){
