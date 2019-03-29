@@ -65,9 +65,10 @@ class Pac extends Element{
 						rejouer.onclick = function(){document.location.href = location.href;};
 						div.appendChild(p);
 						div.appendChild(rejouer);
-						div.style.border = "1px solid black";
+						div.style.border = "1px solid #CB0000";
 						div.style.width = "20%";
 						div.style.height = "20%";
+						div.style.backgroundColor = "#EB8F28";
 						p.style.textAlign = "center";
 						rejouer.style.marginLeft = "38.5%";
 						rejouer.style.marginRight = "38.5%";

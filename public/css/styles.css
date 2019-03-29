@@ -8,3 +8,12 @@ canvas {
 img.invisible {
 	display: none;
 }
+
+aside {
+	width : 30%;
+	float:right;
+}
+
+h1,h3 {
+	text-align: center;
+}

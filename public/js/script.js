@@ -34,9 +34,10 @@ window.onload = function() {
   play.onclick = function(){music.src = "public/music/pacmanRemix.mp3";};
   stop.onclick = function(){music.src = "";};
 
-  div.style.border = "1px solid black";
-  div.style.width = "300px";
-  div.style.height = "100px";
+  div.style.border = "1px solid #F76512";
+  div.style.width = "20%";
+  div.style.height = "20%";
+  div.style.backgroundColor = "#F7E912";
 
   document.body.appendChild(div);
 
