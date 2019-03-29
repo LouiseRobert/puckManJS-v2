@@ -94,6 +94,13 @@ window.onload = function() {
         new Gomme(coord[0], coord[1], d);
     }
 
+    //On crée un tableau contenant les emplacements des vitamines
+    var emplacementVitamines = [[50,50],[50,590],[630,590],[630,50]]; //à savoir: il y a toujours une gomme sous la vitamine pour le compteur des gommes mangées
+    
+    //On crée une vitamine a chacun des emplacements du tableau
+    for(let coord of emplacementVitamines){
+      new Vitamine(coord[0],coord[1],d);
+    }
 
     let pac = new Pac(d, emplacementGommes);
 
