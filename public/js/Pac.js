@@ -75,6 +75,6 @@ class Pac extends Element{
 			}
 		}.bind(this),120);
 
-		console.log("gommes mangées: " + this.gommesMangees);
+		//console.log("gommes mangées: " + this.gommesMangees);
 	}
 }

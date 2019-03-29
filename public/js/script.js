@@ -39,11 +39,15 @@ window.onload = function() {
   div.style.height = "100px";
 
   document.body.appendChild(div);
+
 //On definit des constantes pour les directions
   const bot = "bot";
   const left = "left";
   const right = "right";
   const top = "top";
+
+  // si le jeu est en pause ou non
+  var interval = -1;
 
     //On crée les variables dont on a besoin pour dessiner la map, les personnages et les gommes
   var c = document.getElementById("myCanvas");
@@ -123,11 +127,35 @@ window.onload = function() {
       case "ArrowDown" : // touche bas
         pac.changeDirection("down");
         pac.move(0, 1);
-        break;
+        break;        
     }
   }
 
-  document.addEventListener('keydown', gererClavier);
+  function gererPause(event){
+    let k = event.key;
+    if(k == " "){
+      if(interval == -1){
+          console.log("PAUSED");
+          interval = setInterval(function(){ window.setTimeout(function(){},100); }, 100);
+          document.body.style.backgroundColor = "#D3D3D3";
+        } else {
+          clearInterval(interval);
+          interval = -1;
+          document.body.style.backgroundColor = "white";
+        }
+    }
+  }
+
+  document.addEventListener('keydown', gererPause);
+
+  // on vérifie toutes les 0.1 ms si le jeu est en pause
+setInterval(function(){
+  if(interval == -1){
+    document.addEventListener('keydown', gererClavier);
+  } else{
+    document.removeEventListener('keydown', gererClavier);
+  }}, 100);
+  
 
 
 };
