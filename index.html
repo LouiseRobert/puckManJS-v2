@@ -7,36 +7,40 @@
     <title>Puc-Man</title>
 </head>
 <body>
-	<aside> 
-		<h1> PuckmanJS </h1>
-		<h3>Contexte</h3>
-		<p>Lors du semestre 4 de notre 2nde année de DUT informatique il nous a été demandé de coder un jeu en Javascript.
-		Notre seule contrainte : le thème. Le 1er étage du batiment K, un batiment à base carrée de 3 étages et un patio au centre. 
-		Ce thème en tête, nous avons longuement réfléchi à quel jeu - simple - il serait intérêssant de coder... un Pong? quel rapport avec le thème...
-		un Snake? bof.....</p>
-		<br>
-		<p> Pacman ! Mais oui ! Et c'est après cette idée lumineuse et pour le moins tout à fait adaptée au thème architectural que nous nous sommes mis en route vers la salle K116, l'esprit rêveur et loin de nous douter de ce que cache, en termes d'implémentation, ce morceau de camenbert jaune. </p>
-		<h3>Règles du jeu</h3>
-		<p>Comment ça vous ne connnaissez pas les règles du Pacman ? Vous me décevez...</p>
-		<br>
-		<p> Oui je vais vous expliquer quand même... enfin c'est bizarre hein.. Bref, vous êtes le point jaune qui sourit, votre but est de manger les gommes, oui comme les enfants en maternelle. Une fois que vous avez tout mangé, c'est gagné.</p>
-		<br>
-		<p> Ah oui, j'oubliais, Blinky, Pinky, Inky et Clyde en ont après vous. Je ne sais pas ce que vous leur avez fait mais s'ils vous touchent, vous perdez un tiers de votre vie. Pas cool ça. Mais, parce qu'il y a toujours un "mais", si vous mangez une vitamine (la grosse gomme ronde), c'est vous qui pourrez assomer vos adversaires. La roue finit toujours par tourner, comme on dit.</p>
-		<h3>Manuel d'utilisation</h3>
-		<p>Aller concentrez-vous c'est pas compliqué, tout est sur le clavier. Les flèches pour vous diriger, la barre espace pour faire pause.</p>
-		<br>
-		<p>Vous êtes encore là ? Oui oui, c'est tout! aller, allez manger ces gommes maintenant, je vous regarde.</p>
-	</aside>
+<aside>
+    <h1> PuckmanJS </h1>
+    <h3>Contexte</h3>
+    <p>Lors du semestre 4 de notre 2nde année de DUT informatique il nous a été demandé de coder un jeu en Javascript.
+        Notre seule contrainte : le thème. Le 1er étage du batiment K, un batiment à base carrée de 3 étages et un patio au centre.
+        Ce thème en tête, nous avons longuement réfléchi à quel jeu - simple - il serait intérêssant de coder... un Pong? quel rapport avec le thème...
+        un Snake? bof.....</p>
+    <br>
+    <p> Pacman ! Mais oui ! Et c'est après cette idée lumineuse et pour le moins tout à fait adaptée au thème architectural que nous nous sommes mis en route vers la salle K116, l'esprit rêveur et loin de nous douter de ce que cache, en termes d'implémentation, ce morceau de camenbert jaune. </p>
+    <h3>Règles du jeu</h3>
+    <p>Comment ça vous ne connnaissez pas les règles du Pacman ? Vous me décevez...</p>
+    <br>
+    <p> Oui je vais vous expliquer quand même... enfin c'est bizarre hein.. Bref, vous êtes le point jaune qui sourit, votre but est de manger les gommes, oui comme les enfants en maternelle. Une fois que vous avez tout mangé, c'est gagné.</p>
+    <br>
+    <p> Ah oui, j'oubliais, Blinky, Pinky, Inky et Clyde en ont après vous. Je ne sais pas ce que vous leur avez fait mais s'ils vous touchent, vous perdez un tiers de votre vie. Pas cool ça. Mais, parce qu'il y a toujours un "mais", si vous mangez une vitamine (la grosse gomme ronde), c'est vous qui pourrez assomer vos adversaires. La roue finit toujours par tourner, comme on dit.</p>
+    <h3>Manuel d'utilisation</h3>
+    <p>Aller concentrez-vous c'est pas compliqué, tout est sur le clavier. Les flèches pour vous diriger, la barre espace pour faire pause.</p>
+    <br>
+    <p>Vous êtes encore là ? Oui oui, c'est tout! aller, allez manger ces gommes maintenant, je vous regarde.</p>
+</aside>
 <img class="invisible" id="tileset" src="public/img/tileset3.jpeg" alt="tileset">
 <img class="invisible" id="pacG" src="public/img/pacmanGauche.gif" alt="pacman">
 <img class="invisible" id="gomme" src="public/img/gomme.png" alt="pac-gomme">
 <img class="invisible" id="blinky" src="public/img/blinky.png" alt="blinky">
+<img class="invisible" id="Pinky" src="public/img/pinky.png" alt="pinky">
+<img class="invisible" id="Inky" src="public/img/inky.png" alt="inky">
+<img class="invisible" id="Clyde" src="public/img/clyde.png" alt="clyde">
 <img class="invisible" id="vitamine" src="public/img/vitamine.png" alt="vitamine">
 
 <canvas id="myCanvas" width="700" height="666">
-Your browser does not support the HTML5 canvas tag.
+    Your browser does not support the HTML5 canvas tag.
 </canvas>
 <canvas id="canvaDepl" width="700" height="666"></canvas>
+<canvas id="canvasMob" width="700" height="666"></canvas>
 
 <script type="text/javascript" src="public/js/Element.js"></script>
 <script type="text/javascript" src="public/js/Gomme.js"></script>

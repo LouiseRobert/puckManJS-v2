@@ -112,7 +112,6 @@ class Element {
 		//console.log(" ap " + this.moving + " " + x + " " + y);
 
 		this.myMove = setInterval(function () {
-			console.log(this.x + "," + this.y); // POUR RECCUPERER LES COORDONNÉES, A SUPPRIMER PLUS TARD
 			let elem = document.getElementById(this.id);
 			this.ctxDepl.clearRect(this.x, this.y, this.larg, this.haut);
 

@@ -14,8 +14,8 @@ class Vitamine{
 		this.y = y + 5;
 
 
-		//On dessine la gomme
-		var vitamine = document.getElementById("vitamine");
+		//On dessine la vitamine
+		let vitamine = document.getElementById("vitamine");
 		this.canvasVit = canvasDepl;
 		this.ctx = this.canvasVit.getContext("2d");
 
