@@ -93,12 +93,15 @@ class Pac extends Element{
 				setTimeout(function () {
 					document.getElementById("godMode").innerHTML = "";
 					pac.godMode = "off";
-				}, 1200);
+				}, 3000);
 			}
 		}
 		//console.log("gommes mangées: " + this.gommesMangees);
 	}
 
+	/**
+	 * Fait revivre ou perdre le joueur selon son nombre de vies restantes
+	 */
 	revive() {
 		clearInterval(this.myMove);
 		BlinkyE.stop();
@@ -114,13 +117,14 @@ class Pac extends Element{
 			this.x = 270;
 			this.y = 210;
 			ctxPac.drawImage(document.getElementById(this.id), this.x, this.y, 25, 25);
+			document.body.style.backgroundColor = "white";
 			setTimeout(function () {
 				BlinkyE.move();
 				PinkyE.move();
 				ClydeE.move();
 				InkyE.move();
 			}, 1000);
-		} else {
+		} else if (this.lifeLeft === 0) {
 			const div = document.createElement("div");
 			let p = document.createElement("p");
 			let rejouer = document.createElement("button");

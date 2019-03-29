@@ -98,7 +98,6 @@ class Element {
 	 * @param y  deplacement en ordonnée
 	 */
 	move(x,y) {
-		//console.log(this.x + " " + this.y);
 		this.moved = false;
 		if (this.moving !== undefined) {
 			if (this.moving === x + " " + y) {
@@ -107,10 +106,7 @@ class Element {
 				clearInterval(this.myMove);
 			}
 		}
-		//console.log(" av " + this.moving + " " + x + " " + y);
 		this.moving = x + " " + y;
-		//console.log(" ap " + this.moving + " " + x + " " + y);
-
 		this.myMove = setInterval(function () {
 			let elem = document.getElementById(this.id);
 			this.ctxDepl.clearRect(this.x, this.y, this.larg, this.haut);
