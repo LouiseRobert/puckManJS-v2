@@ -5,6 +5,6 @@ canvas {
 }
 
 
-img {
+img.invisible {
 	display: none;
 }

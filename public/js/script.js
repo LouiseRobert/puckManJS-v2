@@ -2,6 +2,43 @@
  * On exécute le code quand la fenetre est chargée
  */
 window.onload = function() {
+  // gestion de la musique
+  var div = document.createElement("div");
+  var music = document.createElement("audio");
+  music.controls;
+  music.autoplay = true;
+  music.src = "public/music/pacmanRemix.mp3";
+  music.loop = true;
+
+  div.appendChild(music);
+  var p = document.createElement("p");
+  p.innerHTML = "un peu de musique agréable ? :)";
+  p.style.textAlign = "center";
+  var play = document.createElement("img");
+  play.src = "public/img/son.png";
+  play.style.width = "20%";
+  play.style.height = "50%";
+  play.style.marginLeft = "30%";
+
+  var stop = document.createElement("img");
+  stop.src = "public/img/silence.png";
+  stop.style.width = "20%";
+  stop.style.height = "50%";
+  stop.style.marginRight = "30%";
+
+
+  div.appendChild(p);
+  div.appendChild(play);
+  div.appendChild(stop);
+
+  play.onclick = function(){music.src = "public/music/pacmanRemix.mp3";};
+  stop.onclick = function(){music.src = "";};
+
+  div.style.border = "1px solid black";
+  div.style.width = "300px";
+  div.style.height = "100px";
+
+  document.body.appendChild(div);
 //On definit des constantes pour les directions
   const bot = "bot";
   const left = "left";
